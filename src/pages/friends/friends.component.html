@@ -1,0 +1,35 @@
+<app-header />
+
+<div>
+    <div class="header">
+        <p>Список друзей</p>
+    </div>
+
+    <div class="friends_table">
+        <div class="friends_info"
+            *ngFor="let friend of friends"
+        >
+            <img src="{{UserService.backend}}/src/img/{{friend.avatar}}">
+            <div class="description">
+                <p>ID: {{friend.id}}</p>
+                <p>Имя: {{friend.name}}</p>
+                <p>Дата рождения: {{friend.date}}</p>
+                <p>email: {{friend.email}}</p>
+                <p>Роль: {{friend.role}}</p>
+                <p>Статус: {{friend.status}}<p>
+            </div>
+            <button (click)="go_to_friend_chat(friend.id)">Написать</button>
+        </div>
+    </div>
+
+    <input
+        type="string"
+        name="friend_id"
+        placeholder="Select friend id"
+        [(ngModel)]="selected_friend_id"
+    />
+
+    <button (click)="add_friend()">Добавить друга</button>
+    <button (click)="delete_friend()">Удалить друга</button>
+    <button (click)="this.UserService.go_to_page('profile')">Вернуться назад</button>
+</div>

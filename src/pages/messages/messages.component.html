@@ -1,0 +1,48 @@
+<app-header />
+
+<div>
+    <div class="header">
+        <p>Диалог</p>
+    </div>
+
+    <div class="dialog">
+        <div class="message"
+            *ngFor="let message of messages"
+        >
+            <div *ngIf="message.sender==user.id; then user_desc else friend_desc">
+                Here is never showing
+            </div>   
+
+                <ng-template #user_desc>
+                    <div class="description">
+                        <img src="{{UserService.backend}}/src/img/{{user.avatar}}">
+                        <p>{{user.name}}</p>
+                    </div>
+                </ng-template>
+
+                <ng-template #friend_desc>
+                    <div class="description">
+                        <img src="{{UserService.backend}}/src/img/{{friend.avatar}}">
+                        <p>{{friend.name}}</p>
+                    </div>
+                </ng-template>
+
+            <div class="text">
+                <p>{{message.message}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu">
+        <input
+        type="text"
+        name="post"
+        placeholder="Your message"
+        [(ngModel)]="new_message"
+        />
+
+        <button (click)="add_message()">Отправить</button>
+
+        <button (click)="this.UserService.go_to_page('friends')">Вернуться назад</button>
+    </div>
+</div>

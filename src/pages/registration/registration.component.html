@@ -1,0 +1,50 @@
+<div class="header">Создание аккаунта</div>
+
+<div class="main">
+    <div>
+        <input
+            type="text"
+            name="name"
+            placeholder="Your name"
+            [(ngModel)]="name"
+        />
+        
+        <input
+            type="date"
+            name="date"
+            placeholder="Your date birth"
+            [(ngModel)]="date"
+        />
+
+        <input
+            type="text"
+            name="email"
+            placeholder="Your email"
+            [(ngModel)]="email"
+        />
+
+        <input
+            type="password"
+            name="password"
+            placeholder="Your password"
+            [(ngModel)]="password"
+        />
+        
+        <input
+            type="password"
+            name="password"
+            placeholder="Confirm your password"
+            [(ngModel)]="confirm_password"
+        />
+    </div>
+
+    <div>
+        <button
+            (click)="create_account()"
+        >Создать аккаунт</button>
+
+        <button
+            (click)="this.AuthService.go_to_login()"
+        >Войти в уже существующий аккаунт</button>
+    </div>
+</div>

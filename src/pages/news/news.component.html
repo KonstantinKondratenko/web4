@@ -1,0 +1,54 @@
+<app-header />
+
+<div>
+    <div class="header">
+        <p>Новости</p>
+    </div>
+
+    <div class="menu">
+        <input
+        type="text"
+        name="post"
+        placeholder="What's new?"
+        [(ngModel)]="new_post"
+        />
+
+        <button (click)="add_news()">Добавить новость</button>
+
+        <button (click)="this.UserService.go_to_page('profile')">Вернуться назад</button>
+    </div>
+
+    <div class="news">
+        <p class="menu_description">Ваши новости</p>
+        <div class="user_news"
+            *ngFor="let your_news of user_news"
+        >
+            <div class="description">
+                <img src="{{UserService.backend}}/src/img/{{your_news.avatar}}">
+                <p>{{your_news.name}}</p>
+            </div>
+
+            <div class="posts"
+                *ngFor="let post of your_news.posts"
+            >
+                <p>{{post}}</p>
+            </div>
+        </div>
+
+        <p class="menu_description">Новости ваших друзей</p>
+        <div class="friend_news" 
+            *ngFor="let news_info of friend_news"
+        >
+            <div class="description">
+                <img src="{{UserService.backend}}/src/img/{{news_info.avatar}}">
+                <p>{{news_info.name}}</p>
+            </div>
+
+            <div class="posts"
+                *ngFor="let post of news_info.posts"
+            >
+                <p>{{post}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<app-header />
+
+<div>
+    <div class="header">
+        Профиль
+    </div>
+
+    <div class="profile">
+        <img [src]="image_path">
+
+        <div>
+            <p>Имя: {{user.name}}</p>
+            <p>email: {{user.email}}</p>
+            <p>Дата рождения: {{user.date}}</p>
+        </div>
+    </div>
+
+    <div class="menu">
+        <div>
+            <input 
+                type="file"
+                name="avatar"
+                (change)="on_selected_file($event)"
+            />
+        </div>
+
+        <div>
+            <button
+                (click)="upload_avatar()"
+            >Загрузить аватар</button>
+
+            <button
+                (click)="delete_avatar()"
+            >Удалить аватар</button>
+        </div>
+
+        <div>
+            <button
+                (click)="this.UserService.go_to_page('news')"
+            >Новости</button>
+
+            <button
+                (click)="this.UserService.go_to_page('friends')"
+            >Друзья</button>
+        </div>
+    </div>
+</div>

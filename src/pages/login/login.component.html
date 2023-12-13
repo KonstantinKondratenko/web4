@@ -1,0 +1,27 @@
+<div class="header">Добро пожаловать</div>
+
+<div class="main">
+    <div>
+        <input
+            type="text"
+            name="email"
+            placeholder="Your email"
+            [(ngModel)]="email"
+        />
+
+        <input
+            type="password"
+            name="password"
+            placeholder="Your password"
+            [(ngModel)]="password"
+        />
+    </div>
+    
+    <div>
+        <button
+            (click)="login()"
+        >Войти</button>
+
+        <button (click)="this.AuthService.go_to_registration()">Создать аккаунт</button>
+    </div>
+</div>
